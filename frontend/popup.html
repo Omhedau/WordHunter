@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Information</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap"
+    rel="stylesheet">
+   
+    <script src="/js/showdown.min.js"></script>
+
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .font {
+      font-family: "Edu VIC WA NT Beginner", cursive;
+      font-optical-sizing: auto;
+
+    }
+
+        /* Body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d;
+            color: #a27af8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+         
+            overflow: hidden; /* Prevent scrollbars on body */
+        }
+        h1{
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        /* Container for input and button */
+        .input-container {
+            background: #0e0e0e;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 600px;
+            height:400px;
+            max-width: 800px; /* Increased max width */
+            text-align: center;
+            overflow: auto; /* Ensure content fits */
+        }
+
+        /* Input styling */
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+             text-align: center;
+            font-weight:bold;
+            margin-top: 25px;
+            background-color: #10061e;
+            font-size: 30px;
+            border: 2px solid #022531;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+            color: #8076bb
+        }
+
+        input[type="text"]:focus {
+            border-color: #94f086;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #68e274;
+            color: rgb(9, 9, 9);
+            border: none;
+
+            padding: 15px 20px;
+            font-size: 40px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            width: 100%;
+        }
+       
+        button:hover {
+            background-color: #30e357;
+        }
+        p{
+            font-size: 14px;
+        }
+
+        /* Popup styling */
+        .popup {
+            position: absolute;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: 100%;
+            max-width: 800px; /* Width of the popup */
+            max-height: 90vh; /* Increased height for more content */
+            overflow-y: auto; /* Enable vertical scrolling */
+            word-wrap: break-word;
+            box-sizing: border-box;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 10px; /* Space between input and result */
+        }
+
+        .padded {
+    padding: 30px 30px 30px 30px;/* Add left padding */
+}
+
+.light-green-bg {
+    background-color: #99f0c7; /* Light green background color */
+}
+
+    </style>
+</head>
+<body>
+    <div class="input-container ">
+        <h1 class="font">Word Information</h1>
+        <p class="font">Enter a word below to get its information.</p>
+        <input class="font" type="text" id="wordInput" placeholder="Type a word...">
+        <button class="font" id="fetchWordInfo">Get Word Info</button>
+    </div>
+    <div id="popupContainer"></div>
+    
+    <script src="popup.js"></script> <!-- External JavaScript file -->
+</body>
+</html>

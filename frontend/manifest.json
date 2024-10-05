@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Word Information Finder",
+  "version": "1.0",
+  "description": "Find definitions, synonyms, antonyms, and more.",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

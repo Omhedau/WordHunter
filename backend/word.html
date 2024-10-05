@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Definition Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .definition {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Word Definition Finder</h1>
+        <input type="text" id="wordInput" placeholder="Enter a word">
+        <button onclick="getDefinition()">Get Definition</button>
+        <div id="definition" class="definition"></div>
+    </div>
+
+    <script>
+        async function getDefinition() {
+            const word = document.getElementById('wordInput').value;
+            const definitionDiv = document.getElementById('definition');
+
+            if (word.trim() === '') {
+                definitionDiv.innerText = 'Please enter a word.';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/define', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ word })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    definitionDiv.innerText = `${data.definition}`;
+                } else {
+                    definitionDiv.innerText = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                definitionDiv.innerText = 'Error fetching the definition.';
+            }
+        }
+    </script>
+</body>
+
+</html>
